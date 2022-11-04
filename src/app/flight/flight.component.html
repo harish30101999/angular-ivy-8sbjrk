@@ -1,0 +1,171 @@
+<div class="header" style="text-align:center">
+  <h1 style="color:red">FLIGHT TICKET BOOKING</h1>
+  </div>
+  <form #f="ngForm" name="form" (ngSubmit)="addflight()" class="row g-12">
+  <div>
+    <div class="col-12">
+      <label for="firstname">FIRST NAME</label>&nbsp;
+      <input
+        type="text"
+        id="fname"
+        name="firstname"
+        [(ngModel)]="model.firstname"
+      />
+    </div>
+    <br />
+    <div class="col-12">
+      <label for="lastname">LAST NAME</label>&nbsp;
+      <input
+        type="text"
+        id="lname"
+        name="lastname"
+        [(ngModel)]="model.lastname"
+      />
+    </div>
+    <br />
+    <div class="col-12">
+      <label for="email">EMAIL ID</label>&nbsp;
+      <input type="email" id="email" name="email" [(ngModel)]="model.email" />
+    </div>
+    <br />
+    <div class="col-12">
+      <label for="dob">DOB</label>&nbsp;
+      <input type="date" id="dob" name="dob" [(ngModel)]="model.dob" />
+    </div>
+    <br />
+    <label for="gender"> GENDER </label>
+    <div class="col-12">
+      <label for="male">Male</label>&nbsp;
+      <input
+        type="radio"
+        id="gender"
+        name="gender"
+        value="male"
+        [(ngModel)]="model.gender"
+      />
+      &nbsp;
+      <label for="male">Female</label>&nbsp;
+      <input
+        type="radio"
+        id="gender"
+        name="gender"
+        value="female"
+        [(ngModel)]="model.gender"
+      />
+      &nbsp;
+      <label for="other">Other</label>&nbsp;
+      <input
+        type="radio"
+        id="gender"
+        name="gender"
+        value="other"
+        [(ngModel)]="model.gender"
+      />
+    </div>
+    <br />
+    <div class="col-12">
+      <label for="pickup">PICKUP</label>&nbsp;
+      <select
+        name="pickup"
+        id="pickup"
+        [(ngModel)]="model.pickup"
+      >
+        <option value="chennai">Chennai</option>
+        <option value="mumbai">Mumbai</option>
+        <option value="kolkata">Kolkata</option>
+        <option value="delhi">Delhi</option>
+        
+      </select>
+    </div>
+    <br />
+    <div class="col-12">
+      <label for="pdate">PICKUP DATE</label>&nbsp;
+      <input type="date" id="pdate" name="pdate" [(ngModel)]="model.pdate" />
+    </div>
+    <br />
+    <div class="col-12">
+      <label for="drop">DROP</label>&nbsp;
+      <select
+        name="drop"
+        id="drop"
+        [(ngModel)]="model.drop"
+      >
+        <option value="chennai">Chennai</option>
+        <option value="mumbai">Mumbai</option>
+        <option value="kolkata">Kolkata</option>
+        <option value="delhi">Delhi</option>
+        
+      </select>
+    </div>
+    <br />
+    <div class="col-12">
+      <label for="seat">SEAT</label>&nbsp;
+      <select
+        name="seat"
+        id="seat"
+        [(ngModel)]="model.seat"
+      >
+        <option value="firstclass">First Class</option>
+        <option value="secondclass">Second Class</option>
+        <option value="economyclass">Economy Class</option>
+        
+        
+      </select>
+    </div>
+    <br />
+    
+    <label>INSURANCE</label>
+    <div class="col-12">
+      <input type="checkbox" id="insurance1" name="insurance1" value="accident" [(ngModel)]="model.insurance"/>
+      &nbsp;<label for="vehicle1"> Accident</label><br />
+      <input type="checkbox" id="insurance2" name="insurance2" value="luggage" />
+      &nbsp;<label for="vehicle2"> Luggage</label><br />
+      <input type="checkbox" id="insurance3" name="insurance3" value="onlinefraud" />
+      &nbsp;<label for="vehicle3"> Online Fraud</label><br />
+    </div>
+    <br />
+  </div>
+  
+  <textarea ng-model="myTextarea"></textarea>
+  <!-- <p>The content of the textarea is;</p> -->
+  <br />
+  <input type="submit" class="btn btn-success" value="save" />
+  <!-- <h1>{{myTextarea}}</h1> -->
+  </form>
+  <!-- style=" width: 50vw; margin-left : 25vw;" -->
+  <table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>FIRST NAME</th>
+      <th>LAST NAME</th>
+      <th>EMAIL ID</th>
+      <th>DOB</th>
+      <th>GENDER</th>
+      <th>PICKUP</th>
+      <th>PICKUP DATE</th>
+      <th>DROP</th>
+      <th>INSURANCE</th>
+      <th>EDIT</th>
+      <th>DELETE</th>
+    </tr>
+  </thead>
+  <!-- tbody -->
+  <tbody>
+    <tr *ngFor="let flight of flights">
+      <td>{{ flight.id }}</td>
+      <td>{{ flight.firstname }}</td>
+      <td>{{ flight.lastname }}</td>
+      <td>{{ flight.emailid }}</td>
+      <td>{{ flight.dob }}</td>
+      <td>{{ flight.gender }}</td>
+      <td>{{ flight.pickup }}</td>
+      <td>{{ flight.pdate }}</td>
+      <td>{{ flight.drop }}</td>
+      <td>{{ flight.insurance }}</td>
+      <td><button (click)="editflight(flight.id)">edit</button></td>
+      <td><button (click)="deleteflight(flight.id)">delete</button></td>
+    </tr>
+  </tbody>
+  </table>
+  
